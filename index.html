@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Apolo — Centro de Estética · Heredia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F7F3EE;
+    --warm-white: #FDFAF6;
+    --sand: #E8DDD0;
+    --blush: #D4A89A;
+    --rose: #B8735F;
+    --deep: #2C1F1A;
+    --mid: #6B4F44;
+    --light-mid: #A08070;
+    --accent: #C9956A;
+    --gold: #B89B6A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(247,243,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(180,135,100,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300; letter-spacing: 0.12em;
+    color: var(--deep); text-decoration: none;
+  }
+  .nav-logo span { color: var(--rose); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid var(--rose);
+    color: var(--rose); background: transparent;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--rose); color: white; }
+
+  /* ── HERO ── */
+  #inicio {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3rem 5rem 3rem;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 2rem; height: 0.5px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--deep); margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--rose); }
+  .hero-subtitle {
+    font-size: 0.95rem; font-weight: 300; line-height: 1.9;
+    color: var(--mid); max-width: 380px; margin-bottom: 3rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    background: var(--deep); color: var(--cream);
+    border: none; cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--rose); }
+  .btn-secondary {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: color 0.3s;
+  }
+  .btn-secondary:hover { color: var(--rose); }
+  .btn-secondary::after { content: '→'; font-size: 1rem; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--sand);
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(212,168,154,0.35) 0%, transparent 60%),
+      radial-gradient(circle at 80% 70%, rgba(201,149,106,0.2) 0%, transparent 50%);
+  }
+  .hero-decorative {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-circle-outer {
+    width: min(460px, 80%); aspect-ratio: 1;
+    border: 0.5px solid rgba(180,135,100,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: slowSpin 40s linear infinite;
+  }
+  .hero-circle-inner {
+    width: 75%; aspect-ratio: 1;
+    border: 0.5px solid rgba(180,135,100,0.5);
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(247,243,238,0.6), rgba(232,221,208,0.4));
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+    animation: slowSpin 40s linear infinite reverse;
+  }
+  .hero-circle-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; font-style: italic;
+    color: var(--deep); text-align: center; line-height: 1.2;
+  }
+  .hero-circle-sub {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mid);
+  }
+  .orbit-dot {
+    position: absolute; width: 8px; height: 8px;
+    background: var(--rose); border-radius: 50%;
+    top: -4px; left: calc(50% - 4px);
+  }
+  .orbit-dot-2 {
+    position: absolute; width: 5px; height: 5px;
+    background: var(--gold); border-radius: 50%;
+    bottom: -2.5px; right: 20%;
+  }
+  @keyframes slowSpin { to { transform: rotate(360deg); } }
+
+  .hero-info-strip {
+    position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
+    display: flex; gap: 2rem;
+  }
+  .info-chip {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid); display: flex; align-items: center; gap: 0.5rem;
+  }
+  .info-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* ── SOBRE NOSOTROS ── */
+  #nosotros {
+    padding: 8rem 3rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center;
+    background: var(--warm-white);
+  }
+  .about-label {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--deep); margin-bottom: 1.5rem;
+  }
+  .about-title em { font-style: italic; color: var(--rose); }
+  .about-text {
+    font-size: 0.95rem; font-weight: 300; line-height: 2;
+    color: var(--mid); margin-bottom: 2rem;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .stat-box {
+    padding: 1.5rem;
+    border: 0.5px solid var(--sand);
+    background: var(--cream);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300;
+    color: var(--rose); line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-desc {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid);
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-img-frame {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--sand);
+    position: relative; overflow: hidden;
+  }
+  .about-img-inner {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 60% 30%, rgba(212,168,154,0.5), transparent 65%),
+      radial-gradient(circle at 20% 80%, rgba(201,149,106,0.3), transparent 50%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; font-weight: 300; font-style: italic;
+    color: rgba(44,31,26,0.08); line-height: 1; text-align: center;
+    user-select: none;
+  }
+  .about-accent-line {
+    position: absolute; left: -1.5rem; top: 2rem; bottom: 2rem;
+    width: 2px; background: linear-gradient(to bottom, transparent, var(--rose), transparent);
+  }
+
+  /* ── SERVICIOS ── */
+  #servicios {
+    padding: 8rem 3rem;
+    background: var(--cream);
+  }
+  .section-header {
+    text-align: center; margin-bottom: 5rem;
+  }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300; color: var(--deep); line-height: 1.2;
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--sand);
+    max-width: 1100px; margin: 0 auto;
+  }
+  .service-card {
+    background: var(--warm-white);
+    padding: 3rem 2.5rem;
+    transition: background 0.4s;
+    cursor: default;
+  }
+  .service-card:hover { background: var(--deep); }
+  .service-card:hover .service-icon { color: var(--blush); }
+  .service-card:hover .service-name { color: var(--cream); }
+  .service-card:hover .service-desc { color: var(--sand); }
+  .service-card:hover .service-num { color: rgba(255,255,255,0.15); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300;
+    color: rgba(44,31,26,0.06);
+    line-height: 1; margin-bottom: 1.5rem;
+    transition: color 0.4s;
+  }
+  .service-icon {
+    font-size: 1.5rem; color: var(--rose);
+    margin-bottom: 1rem; transition: color 0.4s;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--deep); margin-bottom: 0.75rem;
+    transition: color 0.4s;
+  }
+  .service-desc {
+    font-size: 0.85rem; font-weight: 300; line-height: 1.8;
+    color: var(--light-mid); transition: color 0.4s;
+  }
+
+  /* ── HORARIO ── */
+  #horario {
+    padding: 8rem 3rem;
+    background: var(--deep);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .hours-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+    color: var(--cream); line-height: 1.2; margin-bottom: 0.5rem;
+  }
+  .hours-title em { font-style: italic; color: var(--blush); }
+  .hours-subtitle {
+    font-size: 0.85rem; font-weight: 300;
+    color: rgba(247,243,238,0.5); margin-bottom: 3rem;
+  }
+  .hours-table { width: 100%; border-collapse: collapse; }
+  .hours-table tr { border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+  .hours-table td { padding: 1rem 0; font-size: 0.9rem; font-weight: 300; }
+  .hours-table .day { color: rgba(247,243,238,0.6); letter-spacing: 0.05em; }
+  .hours-table .time { color: var(--cream); text-align: right; }
+  .hours-table .closed { color: rgba(247,243,238,0.3); text-align: right; }
+  .hours-table .today .day { color: var(--blush); font-weight: 500; }
+  .hours-table .today .time { color: var(--blush); font-weight: 500; }
+
+  .contact-block { display: flex; flex-direction: column; gap: 2rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-icon {
+    width: 40px; height: 40px;
+    border: 0.5px solid rgba(212,168,154,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blush); font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(247,243,238,0.4); margin-bottom: 0.25rem;
+  }
+  .contact-value {
+    font-size: 1rem; font-weight: 300; color: var(--cream);
+    text-decoration: none;
+  }
+  .contact-value:hover { color: var(--blush); }
+
+  /* ── CTA ── */
+  #cita {
+    padding: 8rem 3rem;
+    background: var(--sand);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-bg-circle {
+    position: absolute;
+    width: 600px; height: 600px; border-radius: 50%;
+    border: 0.5px solid rgba(184,115,95,0.15);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+  .cta-bg-circle-2 {
+    position: absolute;
+    width: 900px; height: 900px; border-radius: 50%;
+    border: 0.5px solid rgba(184,115,95,0.08);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+  .cta-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+  .cta-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 1.5rem;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300;
+    color: var(--deep); line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .cta-title em { font-style: italic; color: var(--rose); }
+  .cta-text {
+    font-size: 0.95rem; font-weight: 300; line-height: 1.9;
+    color: var(--mid); margin-bottom: 3rem;
+  }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-whatsapp {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: #25D366; color: white;
+    border: none; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    transition: all 0.3s;
+  }
+  .btn-whatsapp:hover { background: #1ebe5d; }
+  .btn-maps {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: transparent; color: var(--deep);
+    border: 1px solid var(--mid); cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    transition: all 0.3s;
+  }
+  .btn-maps:hover { background: var(--deep); color: var(--cream); border-color: var(--deep); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a100d;
+    padding: 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 300; letter-spacing: 0.1em;
+    color: rgba(247,243,238,0.7);
+  }
+  .footer-logo span { font-style: italic; color: var(--blush); }
+  .footer-copy {
+    font-size: 0.75rem; letter-spacing: 0.05em;
+    color: rgba(247,243,238,0.3);
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(247,243,238,0.4); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--blush); }
+
+  /* ── MOBILE ── */
+  .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0; }
+  .mobile-menu-btn span {
+    display: block; width: 22px; height: 1px;
+    background: var(--deep); margin: 5px 0; transition: 0.3s;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+  .fade-in-delay-4 { transition-delay: 0.4s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links, .nav-cta { display: none; }
+    .mobile-menu-btn { display: block; }
+    #inicio { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 2rem; }
+    .hero-right { height: 50vw; min-height: 260px; }
+    #nosotros { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .about-visual { order: -1; }
+    .about-accent-line { display: none; }
+    #servicios { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    #horario { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    #cita { padding: 5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .hero-info-strip { flex-direction: column; gap: 0.75rem; }
+    .cta-actions { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">Studio <span>Apolo</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#horario">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/50685795191" target="_blank" class="nav-cta">Agendar cita</a>
+  <button class="mobile-menu-btn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-in">Centro de Estética · Heredia, Costa Rica</p>
+    <h1 class="hero-title fade-in fade-in-delay-1">
+      Tu <em>belleza,</em><br>nuestra<br>pasión
+    </h1>
+    <p class="hero-subtitle fade-in fade-in-delay-2">
+      En Studio Apolo combinamos técnica, cuidado y una atmósfera de bienestar para que cada visita sea una experiencia que te renueve por completo.
+    </p>
+    <div class="hero-actions fade-in fade-in-delay-3">
+      <a href="https://wa.me/50685795191" target="_blank" class="btn-primary">Reservar cita</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-decorative fade-in fade-in-delay-2">
+      <div class="hero-circle-outer">
+        <div class="orbit-dot"></div>
+        <div class="hero-circle-inner">
+          <p class="hero-circle-text">Studio<br>Apolo</p>
+          <p class="hero-circle-sub">Est. Heredia · CR</p>
+          <div class="orbit-dot-2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-info-strip">
+      <span class="info-chip"><span class="info-chip-dot"></span>Flores, Heredia</span>
+      <span class="info-chip"><span class="info-chip-dot"></span>Lun–Vie 10 am – 6 pm</span>
+      <span class="info-chip"><span class="info-chip-dot"></span>8579-5191</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="nosotros">
+  <div class="about-content">
+    <p class="about-label fade-in">Sobre nosotros</p>
+    <h2 class="about-title fade-in fade-in-delay-1">
+      Un espacio pensado<br>para <em>tu bienestar</em>
+    </h2>
+    <p class="about-text fade-in fade-in-delay-2">
+      Studio Apolo es un centro de estética ubicado en Flores, Heredia, dedicado a ofrecer tratamientos de belleza con atención personalizada y productos de calidad. Cada servicio está diseñado para que salgas sintiéndote increíble.
+    </p>
+    <p class="about-text fade-in fade-in-delay-2" style="margin-bottom: 2.5rem;">
+      Nuestro equipo te acompaña en cada paso, asesorándote sobre el tratamiento ideal para tus necesidades. Tu comodidad y satisfacción son nuestra prioridad.
+    </p>
+    <div class="about-stats fade-in fade-in-delay-3">
+      <div class="stat-box">
+        <p class="stat-num">100%</p>
+        <p class="stat-desc">Atención personalizada</p>
+      </div>
+      <div class="stat-box">
+        <p class="stat-num">★ 5</p>
+        <p class="stat-desc">En Google Maps</p>
+      </div>
+      <div class="stat-box">
+        <p class="stat-num">AM</p>
+        <p class="stat-desc">Abre a las 10 am</p>
+      </div>
+      <div class="stat-box">
+        <p class="stat-num">Flores</p>
+        <p class="stat-desc">Heredia, Costa Rica</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-visual fade-in fade-in-delay-2">
+    <div class="about-accent-line"></div>
+    <div class="about-img-frame">
+      <div class="about-img-inner">
+        <p class="about-img-text">Belleza<br>&amp;<br>Cuidado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-header">
+    <p class="section-label fade-in">Nuestros servicios</p>
+    <h2 class="section-title fade-in fade-in-delay-1">Tratamientos <em>que te transforman</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <p class="service-num">01</p>
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Tratamientos faciales</h3>
+      <p class="service-desc">Limpiezas profundas, hidratación, control de acné y rejuvenecimiento para un rostro radiante y saludable.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-1">
+      <p class="service-num">02</p>
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Diseño de cejas</h3>
+      <p class="service-desc">Definición y depilación de cejas para enmarcar y realzar tu mirada de forma natural y armoniosa.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <p class="service-num">03</p>
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Manicure & Pedicure</h3>
+      <p class="service-desc">Cuidado completo de manos y pies con acabados impecables y productos de alta calidad.</p>
+    </div>
+    <div class="service-card fade-in">
+      <p class="service-num">04</p>
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Depilación</h3>
+      <p class="service-desc">Técnicas suaves y efectivas para una piel suave y libre de vello por más tiempo.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-1">
+      <p class="service-num">05</p>
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Tratamientos corporales</h3>
+      <p class="service-desc">Exfoliaciones, masajes y envolturas para nutrir tu piel y relajar cuerpo y mente.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <p class="service-num">06</p>
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Maquillaje</h3>
+      <p class="service-desc">Maquillaje profesional para eventos especiales, fotografía o el día a día con acabados duraderos.</p>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:2.5rem; font-size:0.85rem; color:var(--mid); font-weight:300;">
+    ¿Tienes dudas sobre qué tratamiento es el ideal para ti? 
+    <a href="https://wa.me/50685795191" target="_blank" style="color:var(--rose); text-decoration:none;">Escríbenos →</a>
+  </p>
+</section>
+
+<!-- HORARIO & CONTACTO -->
+<section id="horario">
+  <div class="fade-in">
+    <p class="about-label" style="color:var(--blush); margin-bottom:1rem;">Horario de atención</p>
+    <h2 class="hours-title">Siempre aquí<br><em>para ti</em></h2>
+    <p class="hours-subtitle">Visítanos en Flores, Heredia · Abierto de lunes a viernes</p>
+    <table class="hours-table">
+      <tr>
+        <td class="day">Lunes</td>
+        <td class="time">10:00 am – 6:00 pm</td>
+      </tr>
+      <tr>
+        <td class="day">Martes</td>
+        <td class="time">10:00 am – 6:00 pm</td>
+      </tr>
+      <tr>
+        <td class="day">Miércoles</td>
+        <td class="time">10:00 am – 6:00 pm</td>
+      </tr>
+      <tr>
+        <td class="day">Jueves</td>
+        <td class="time">10:00 am – 6:00 pm</td>
+      </tr>
+      <tr>
+        <td class="day">Viernes</td>
+        <td class="time">10:00 am – 6:00 pm</td>
+      </tr>
+      <tr>
+        <td class="day">Sábado</td>
+        <td class="closed">Cerrado</td>
+      </tr>
+      <tr>
+        <td class="day">Domingo</td>
+        <td class="closed">Cerrado</td>
+      </tr>
+    </table>
+  </div>
+  <div class="contact-block fade-in fade-in-delay-1">
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <div>
+        <p class="contact-label">Teléfono</p>
+        <a href="tel:+50685795191" class="contact-value">8579-5191</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">💬</div>
+      <div>
+        <p class="contact-label">WhatsApp</p>
+        <a href="https://wa.me/50685795191" target="_blank" class="contact-value">Escríbenos ahora →</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div>
+        <p class="contact-label">Ubicación</p>
+        <a href="https://maps.google.com/?q=2R3W+5VM,+Heredia,+Flores" target="_blank" class="contact-value">2R3W+5VM · Flores, Heredia</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🗺</div>
+      <div>
+        <p class="contact-label">Google Maps</p>
+        <a href="https://maps.google.com/?q=Studio+Apolo+Heredia" target="_blank" class="contact-value">Ver en el mapa →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cita">
+  <div class="cta-bg-circle"></div>
+  <div class="cta-bg-circle-2"></div>
+  <div class="cta-inner fade-in">
+    <p class="cta-eyebrow">Reserva tu espacio</p>
+    <h2 class="cta-title">¿Lista para <em>sentirte</em> increíble?</h2>
+    <p class="cta-text">Contáctanos por WhatsApp o visítanos directamente en Flores, Heredia. Estamos felices de asesorarte y encontrar el tratamiento perfecto para ti.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/50685795191?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Studio%20Apolo" target="_blank" class="btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://maps.google.com/?q=2R3W+5VM,+Heredia,+Flores" target="_blank" class="btn-maps">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Cómo llegar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Studio <span>Apolo</span></p>
+  <nav class="footer-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#horario">Contacto</a>
+    <a href="https://wa.me/50685795191" target="_blank">WhatsApp</a>
+  </nav>
+  <p class="footer-copy">© 2025 Studio Apolo · Flores, Heredia · Costa Rica</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const today = new Date().getDay();
+  const days = document.querySelectorAll('.hours-table tr');
+  const map = {1:0,2:1,3:2,4:3,5:4,6:5,0:6};
+  if (days[map[today]]) days[map[today]].classList.add('today');
+</script>
+</body>
+</html>
